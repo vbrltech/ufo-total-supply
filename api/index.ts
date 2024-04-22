@@ -11,7 +11,7 @@ app.get('/tgram/total', (c) => {
   return c.json(210000000000);
 });
 
-app.get('/api/tgram/circulating', (c) => {
+app.get('/tgram/circulating', (c) => {
   return c.json(209999999998);
 });
 
