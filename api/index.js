@@ -1,9 +1,5 @@
 import { Hono } from 'hono';
-import { handle } from 'hono/vercel';
-
-export const config = {
-  runtime: 'edge',
-};
+import { serve } from '@hono/node-server';
 
 const app = new Hono().basePath('/api');
 
@@ -15,4 +11,4 @@ app.get('/circulating', (c) => {
   return c.json(999987333);
 });
 
-export default handle(app);
+serve(app)

@@ -1,12 +1,13 @@
 {
   "scripts": {
-    "start": "vercel dev",
-    "deploy": "vercel"
+    "start": "node api/index.js"
   },
   "dependencies": {
+    "@hono/node-server": "^1.12.1",
     "hono": "^4.2.6"
   },
   "devDependencies": {
     "vercel": "^32.4.1"
-  }
+  },
+  "type": "module"
 }
