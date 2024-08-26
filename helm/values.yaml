@@ -1,0 +1,57 @@
+# Default values for my-static-website
+replicaCount: 3
+
+image:
+  repository: 975050344723.dkr.ecr.eu-north-1.amazonaws.com/ufo-total-supply
+  tag: latest
+  pullPolicy: Always
+
+nameOverride: ""
+fullnameOverride: ""
+
+ingress:
+  domain: ufopepe.com
+  sslRedirect: false # cloudflare will do it
+  cloudflareProxied: false
+  paths:
+    - path: /
+      pathType: Prefix
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
+
+deployment:
+  name: ufo-total-supply
+  labels:
+    app: ufo-total-supply
+  containerPort: 80
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+              - key: app
+                operator: In
+                values:
+                  - my-static-website
+          topologyKey: "kubernetes.io/hostname"
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
