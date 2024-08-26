@@ -10,7 +10,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 ingress:
-  domain: ufopepe.com
+  domain: ufopepe.fun
   sslRedirect: false # cloudflare will do it
   cloudflareProxied: false
   paths:
