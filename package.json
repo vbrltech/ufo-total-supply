@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.12.1",
+    "@solana/web3.js": "^1.95.3",
     "hono": "^4.2.6"
   },
   "devDependencies": {
