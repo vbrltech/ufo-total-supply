@@ -10,7 +10,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 ingress:
-  domain: ufopepe.com
+  domain: api.ufopepe.fun
   sslRedirect: false # cloudflare will do it
   cloudflareProxied: false
   paths:
@@ -20,13 +20,13 @@ ingress:
 service:
   type: LoadBalancer
   port: 80
-  targetPort: 80
+  targetPort: 3000
 
 deployment:
   name: ufo-total-supply
   labels:
     app: ufo-total-supply
-  containerPort: 80
+  containerPort: 3000
 
 autoscaling:
   enabled: true
